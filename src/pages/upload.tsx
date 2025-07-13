@@ -40,11 +40,12 @@ const extractTextFromPDF = async (file: File): Promise<string> => {
 
 
 
-
+var checkError =  false;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file) {
-      alert('Please upload a resume first.');
+      alert('Upload a resume first Dont have a resume? building something for it');
+      checkError = true;
       return;
     }
 
@@ -59,13 +60,13 @@ const extractTextFromPDF = async (file: File): Promise<string> => {
     });
 
     const data = await res.json();
-    console.log('🧠 Raw AI response:', data.result);
-    console.log('Open Ai response' );
+    // console.log('🧠 Raw AI response:', data.result);
+    // console.log('Open Ai response' );
     if (data?.result) {
     // Try parsing it as JSON (Gemini returns stringified JSON sometimes)
     try {
       const parsed = JSON.parse(data.result);
-      console.log('✅ Parsed AI result:', parsed);
+    //   console.log('✅ Parsed AI result:', parsed);
       localStorage.setItem('ai-analysis', JSON.stringify(parsed));
       router.push('/analyze');
     } catch (err) {
@@ -79,20 +80,25 @@ const extractTextFromPDF = async (file: File): Promise<string> => {
     localStorage.setItem('aiResult', data.result); // Pass data to next page
     router.push('/analyze');
   };
+//   var msg = "click here to upload resume👇";
+//   if(checkError){
+//     msg = "upload resume bro first"
+//   }
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
-      <h1 className="text-2xl font-bold mb-4">Upload Your Resume (PDF)</h1>
-      <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+      <h1 className="text-3xl text-black  font-bold mb-4">Upload Your Resume (PDF)</h1>
+        {checkError?<div className='errorMsg mr-50 text-gray-300 text-1xl'>upload resume bro first</div>:<div className='errorMsg mr-50 text-gray-300 text-1xl'>click here to upload resume👇</div>}
+      <form onSubmit={handleSubmit} className="w-full  max-w-md space-y-4">
         <input
           type="file"
           accept="application/pdf"
           onChange={handleFileChange}
-          className="block w-full p-2 border rounded"
+          className="block w-full p-2 border rounded bg-gray-300 text-black hover:bg-gray-500"
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+          className="w-full bg-black text-white py-2 px-4 rounded hover:bg-white hover:text-black border-b-white  transition"
           disabled={loading}
         >
           {loading ? 'Analyzing...' : 'Analyze Resume'}

@@ -13,7 +13,7 @@ export default function Home() {
         </button>
       </Link>
       <div className="mt-10 text-sm text-gray-500">
-        Made by <a href="https://github.com/YOUR_GITHUB" className="underline text-shadow-gray-900">Vishvaraj Deshmukh</a>
+        Made by <a href="http://vishvarajdeshmukh.me/Portfolio" className="underline text-shadow-gray-900">Vishvaraj Deshmukh</a>
       </div>
     </main>
   );
