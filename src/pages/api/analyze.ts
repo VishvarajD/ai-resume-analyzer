@@ -54,7 +54,7 @@ ${resumeText}
     }
 
     const content = data.choices[0].message.content;
-    console.log('📦 Gemini response:', content);
+    // console.log('📦 Gemini response:', content);
 
     res.status(200).json({ result: content });
   } catch (err: any) {

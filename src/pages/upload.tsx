@@ -88,7 +88,7 @@ var checkError =  false;
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
       <h1 className="text-3xl text-black  font-bold mb-4">Upload Your Resume (PDF)</h1>
-        {checkError?<div className='errorMsg mr-50 text-gray-300 text-1xl'>upload resume bro first</div>:<div className='errorMsg mr-50 text-gray-300 text-1xl'>click here to upload resume👇</div>}
+        {checkError?<div className='errorMsg mr-50 text-gray-300 text-1xl'>upload resume bro first</div>:<div className='errorMsg mr-50 text-gray-300 text-1xl'>click here to upload👇</div>}
       <form onSubmit={handleSubmit} className="w-full  max-w-md space-y-4">
         <input
           type="file"
